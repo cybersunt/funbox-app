@@ -57,7 +57,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('scripts', function () {
-  gulp.src('./source/js/scripts.js')
+  gulp.src('./source/js/**.js')
     .pipe(gp.jslint())
     .pipe(gp.plumber())
     .pipe(gulp.dest('./public/js/'))

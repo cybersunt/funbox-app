@@ -3,31 +3,45 @@ const products = [
     name: 'Нямушка',
     taste: 'c фуагра',
     weight: 0.5,
-    soldOut: false,
+    buns: {
+      servings: '<b>10</b> порций',
+      toys: 'мышь в подарок',
+      note: ''
+    },
+    selected: false,
+    disabled: false
   },
   {
     name: 'Нямушка',
     taste: 'c рыбой',
     weight: 2,
-    soldOut: false,
+    buns: {
+      servings: '<b>40</b> порций',
+      toys: '<b>2</b> мыши в подарок',
+      note: ''
+    },
+    selected: true,
+    disabled: false
   },
   {
     name: 'Нямушка',
     taste: 'c курой',
+    buns: {
+      servings: '<b>100</b> порций',
+      toys: '<b>5</b> мышей в подарок',
+      note: 'заказчик доволен'
+    },
     weight: 5,
-    soldOut: true
+    selected: false,
+    disabled: true
   }
 ];
 
-Vue.component('todo-item', {
-  template: '<li>Это одна задача в списке</li>'
-})
-
+console.log(products[0].buns);
 
 new Vue({
   el: '#app',
   data: {
-    products: products,
-    bonuses: products.bonuses
+    products: products
   }
 })

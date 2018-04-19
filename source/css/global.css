@@ -41,6 +41,10 @@ body::before {
   z-index: -1;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (min-width: 1200px) {
   body {
     height: 100vh;

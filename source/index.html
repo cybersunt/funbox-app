@@ -16,59 +16,30 @@
   <section class="catalog">
     <h1 class="catalog__title">Ты сегодня покормил кота?</h1>
     <article class="catalog__list" id="app">
-      <article class="catalog__item" v-for="product of products">
-        <div class="catalog__item-card card-product" tabindex="0">
+      <article class="catalog__item" v-for="(product, index) of products">
+        <div tabindex="0"
+            class="catalog__item-card card-product"
+            :class="{'catalog__item-card--disabled':product.disabled,
+                     'catalog__item-card--selected':product.selected
+                   }"
+            v-on:click="product.selected = !product.selected"
+            v-on:keydown.enter="product.selected = !product.selected">
           <p class="card-product__note">Сказочное заморское яство</p>
           <p class="card-product__note card-product__note--focus">Котэ не одобряет?</p>
           <h2 class="card-product__title">{{ product.name }} <span>{{ product.taste }}</span></h2>
           <ul class="card-product__bonus">
-            <todo-item></todo-item>
+            <li v-html="product.buns.servings"></li>
+            <li v-html="product.buns.toys"></li>
+            <li>{{ product.buns.note }}</li>
           </ul>
-          <img class="card-product__image" src="img/cat.jpg" alt="Нямушка c фуа-гра">
+          <img class="card-product__image" src="img/cat.jpg" v-bind:alt="product.name + ' ' + product.taste">
           <div class="card-product__weight">{{ product.weight }}<br> <span>кг</span></div>
         </div>
 
-        <p class="catalog__item-note">Чего сидишь? Порадуй котэ, <button class="catalog__btn-text" type="button">купи.</button></p>
+        <p class="catalog__item-note">Чего сидишь? Порадуй котэ, <button class="catalog__btn-text" type="button" v-on:click="product.selected = !product.selected">купи.</button></p>
         <p class="catalog__item-note catalog__item-note--selected">Печень утки разварная с артишоками.</p>
         <p class="catalog__item-note catalog__item-note--disabled">Печалька, с фуа-гра закончился.</p>
       </article>
-
-<!--       <article class="catalog__item">
-        <div class="catalog__item-card catalog__item-card--selected card-product" tabindex="0">
-          <p class="card-product__note">Сказочное заморское яство</p>
-          <p class="card-product__note card-product__note--focus">Котэ не одобряет?</p>
-          <h2 class="card-product__title">Нямушка <span>c рыбой</span></h2>
-          <ul class="card-product__bonus">
-            <li><b>40</b> порций</li>
-            <li><b>2</b> мыши в подарок</li>
-          </ul>
-          <img class="card-product__image" src="img/cat.jpg" alt="Нямушка c рыбой">
-          <div class="card-product__weight">2<br> <span>кг</span></div>
-        </div>
-
-        <p class="catalog__item-note">Чего сидишь? Порадуй котэ, <button class="catalog__btn-text" type="button">купи.</button></p>
-        <p class="catalog__item-note catalog__item-note--selected">Печень утки разварная с артишоками.</p>
-        <p class="catalog__item-note catalog__item-note--disabled">Печалька, с фуа-гра закончился.</p>
-      </article>
-
-      <article class="catalog__item">
-        <div class="catalog__item-card catalog__item-card--disabled card-product" tabindex="0">
-          <p class="card-product__note">Сказочное заморское яство</p>
-          <p class="card-product__note card-product__note--focus">Котэ не одобряет?</p>
-          <h2 class="card-product__title">Нямушка <span>c курой</span></h2>
-          <ul class="card-product__bonus">
-            <li><b>100</b> порций</li>
-            <li><b>5</b> мышей в подарок</li>
-            <li>заказчик доволен</li>
-          </ul>
-          <img class="card-product__image" src="img/cat.jpg" alt="Нямушка c курой">
-          <div class="card-product__weight">5<br> <span>кг</span></div>
-        </div>
-
-        <p class="catalog__item-note">Чего сидишь? Порадуй котэ, <button class="catalog__btn-text" type="button">купи.</button></p>
-        <p class="catalog__item-note catalog__item-note--selected">Печень утки разварная с артишоками.</p>
-        <p class="catalog__item-note catalog__item-note--disabled">Печалька, с фуа-гра закончился.</p>
-      </article> -->
     </article>
   </section>
   <script src="js/app.js"></script>

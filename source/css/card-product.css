@@ -1,0 +1,101 @@
+.card-product {
+  position: relative;
+}
+
+.card-product__note {
+  margin-top: 0;
+  margin-bottom: 19px;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.card-product__note--focus {
+  color: #e52e7a;
+  display: none;
+}
+
+.card-product__title {
+  font-size: 48px;
+  line-height: 31px;
+  font-weight: bold;
+  color: #000000;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.card-product__title span {
+  font-size: 24px;
+}
+
+.card-product__bonus {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 18px;
+  min-height: 49px;
+}
+
+.card-product__image {
+  display: block;
+  border-bottom-left-radius: 10px;
+  margin-left: -45px;
+}
+
+.card-product__weight {
+  font-size: 42px;
+  line-height: 21px;
+  font-weight: normal;
+  text-align: center;
+  color: #ffffff;
+  background-color: #1698d9;
+  border-radius: 50%;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 81px;
+  height: 81px;
+  padding: 23px 5px;
+  position: absolute;
+  bottom: 11px;
+  right: 11px;
+}
+
+.card-product__weight span {
+  font-size: 21px;
+  line-height: 21px;
+  display: inline-flex;
+}
+
+.catalog__item-card:hover .card-product__weight,
+.catalog__item-card:focus .card-product__weight {
+  background-color: #2ea8e6;
+}
+
+.catalog__item-card--disabled .card-product__note,
+.catalog__item-card--disabled .card-product__title,
+.catalog__item-card--disabled .card-product__bonus  {
+  color: #b3b3b3;
+}
+
+.catalog__item-card--disabled .card-product__weight,
+.catalog__item-card--disabled:focus .card-product__weight {
+  background-color: #b3b3b3;
+}
+
+.catalog__item-card--selected .card-product__weight {
+  background-color: #d91667;
+}
+
+.catalog__item-card--selected:hover .card-product__note,
+.catalog__item-card--selected:focus .card-product__note {
+  display: none;
+}
+
+.catalog__item-card--selected:hover .card-product__note--focus,
+.catalog__item-card--selected:focus .card-product__note--focus {
+  display: block;
+}
+
+.catalog__item-card--selected:hover .card-product__weight,
+.catalog__item-card--selected:focus .card-product__weight {
+  background-color: #e62e7a;
+}

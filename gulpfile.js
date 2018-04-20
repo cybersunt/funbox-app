@@ -2,6 +2,7 @@ const gulp = require('gulp'),
       gp = require('gulp-load-plugins')(),
       browserSync = require('browser-sync').create(),
       importcss = require('postcss-import'),
+      autoprefixer = require('autoprefixer'),
       urlcss = require('postcss-url'),
       reload = browserSync.reload;
 
@@ -16,17 +17,13 @@ gulp.task('server', function() {
   });
 });
 
-// sass
-gulp.task('css', () => {
+gulp.task('css', function()  {
   gulp.src('./source/css/style.css')
     .pipe(gp.plumber())
-    .pipe(gp.autoprefixer({
-      browsers : ['last 2 version'],
-      cascade : false
-    }))
     .pipe(gp.postcss([
       importcss(),                                     // импортируем пути
-      urlcss()                                        // правит пути
+      urlcss(),                                        // правит пути
+      autoprefixer('last 2 version')
     ]))
     .pipe(gulp.dest('./public/css'))
     .pipe(gp.csso())
@@ -35,8 +32,7 @@ gulp.task('css', () => {
     .pipe(reload({stream : true}));
 });
 
-// pug
-gulp.task('html', () => {
+gulp.task('html', function(){
 
   gulp.src('./source/index.html')
     .pipe(gulp.dest('./public'))
@@ -44,7 +40,7 @@ gulp.task('html', () => {
 });
 
 // images for content
-gulp.task('images', () => {
+gulp.task('images',  function() {
   gulp.src('./source/img/**/*.{png,jpg,jpeg,svg}')
     .pipe(gp.plumber())
     .pipe(gp.imagemin([
@@ -57,7 +53,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('scripts', function () {
-  gulp.src('./source/js/**.js')
+  gulp.src('./source/js/app.js')
     .pipe(gp.jslint())
     .pipe(gp.plumber())
     .pipe(gulp.dest('./public/js/'))
@@ -73,11 +69,11 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('watch', () => {
-  gulp.watch('source/fonys/*.html', ['fonts']);
+  gulp.watch('source/fonts/*', ['fonts']);
   gulp.watch('source/*.html', ['html']);
   gulp.watch('source/css/*.css', ['css']);
   gulp.watch('source/img/*', ['images']);
-  gulp.watch('source/**/*', ['scripts']);
+  gulp.watch('source/**/*.js', ['scripts']);
 });
 
 gulp.task('default', [

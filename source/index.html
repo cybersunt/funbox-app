@@ -9,8 +9,8 @@
   <meta name="description" content="Тестовое задание FunBox на ваканстю-html верстальщика">
   <!-- Задание тега Viewport для адаптивного отображения страницы -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
+  <link rel="stylesheet" href="css/style.min.css">
+  <script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"></script>
 </head>
 <body class="inner-page">
   <section class="catalog">
@@ -30,7 +30,7 @@
           <ul class="card-product__bonus">
             <li v-html="product.buns.servings"></li>
             <li v-html="product.buns.toys"></li>
-            <li>{{ product.buns.note }}</li>
+            <li v-cloak>{{ product.buns.note }}</li>
           </ul>
           <img class="card-product__image" src="img/cat.jpg" v-bind:alt="product.name + ' ' + product.taste">
           <div class="card-product__weight">{{ product.weight }}<br> <span>кг</span></div>
@@ -42,6 +42,6 @@
       </article>
     </article>
   </section>
-  <script src="js/app.js"></script>
+  <script src="js/app.min.js"></script>
 </body>
 </html>

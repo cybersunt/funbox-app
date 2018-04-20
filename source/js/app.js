@@ -1,4 +1,6 @@
-const products = [
+'use strict'
+
+var PRODUCTS = [
   {
     name: 'Нямушка',
     taste: 'c фуагра',
@@ -6,7 +8,7 @@ const products = [
     buns: {
       servings: '<b>10</b> порций',
       toys: 'мышь в подарок',
-      note: ''
+      note: null
     },
     selected: false,
     disabled: false
@@ -18,7 +20,7 @@ const products = [
     buns: {
       servings: '<b>40</b> порций',
       toys: '<b>2</b> мыши в подарок',
-      note: ''
+      note: null
     },
     selected: true,
     disabled: false
@@ -37,11 +39,9 @@ const products = [
   }
 ];
 
-console.log(products[0].buns);
-
 new Vue({
   el: '#app',
   data: {
-    products: products
+    products: PRODUCTS
   }
 })
